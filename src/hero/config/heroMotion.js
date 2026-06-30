@@ -1,7 +1,7 @@
 export const camera = {
-  desktop: { position: [0, 5.5, 12],   fov: 55, worldScale: 1.0  },
-  tablet:  { position: [0, 5.0, 10.5], fov: 57, worldScale: 0.95 },
-  mobile:  { position: [0, 4.0, 8.5],  fov: 58, worldScale: 0.88 },
+  desktop: { position: [0, 11, 9],  fov: 65, worldScale: 1.0  },
+  tablet:  { position: [0, 9, 8],   fov: 67, worldScale: 0.95 },
+  mobile:  { position: [0, 8, 7],   fov: 70, worldScale: 0.88 },
 }
 export const reveal = {
   sceneSettle:   0.6,

@@ -52,10 +52,8 @@ export default function Atmosphere() {
 
   return (
     <>
-      {/* Fog — exponential, warm dark brown */}
       <fogExp2 attach="fog" args={[atmo.fog, fogDensity.base]} />
 
-      {/* Sky dome — inverted sphere, BackSide, gradient shader */}
       <mesh renderOrder={-1}>
         <sphereGeometry args={[500, 32, 16]} />
         <shaderMaterial
@@ -67,14 +65,16 @@ export default function Atmosphere() {
         />
       </mesh>
 
-      {/* Stars — very subtle atmospheric scatter */}
-      <Stars radius={100} depth={50} count={600} factor={2} saturation={0} fade={false} />
+      {/* Very faint stars — barely visible at early evening */}
+      <Stars radius={120} depth={30} count={300} factor={1.5} saturation={0} fade={false} />
 
-      {/* Lighting rig — 1 ambient + 2 directional + 1 point = 4 lights, cap is 5 */}
-      <ambientLight color="#2a2e3f" intensity={0.3} />
-      <directionalLight color="#ffe4a0" intensity={1.4} position={[-8, 6, 4]} />
-      <directionalLight color="#ff9a3c" intensity={0.5} position={[6, 2, -6]} />
-      <pointLight color="#c8a96e" intensity={0.8} position={[0, -3, 0]} />
+      {/* Daytime city lighting rig */}
+      {/* Bright warm overhead sun — primary light source */}
+      <directionalLight color="#fff8d8" intensity={2.2} position={[8, 16, 8]} />
+      {/* Cool blue fill — shadow side, gives depth */}
+      <directionalLight color="#90a8c0" intensity={0.40} position={[-6, 8, -4]} />
+      {/* Warm ambient — lifts shadow detail */}
+      <ambientLight color="#e0d4c0" intensity={0.65} />
     </>
   )
 }

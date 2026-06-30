@@ -1,7 +1,22 @@
-import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
+import { Suspense, useEffect } from 'react'
 import Atmosphere from './scene/Atmosphere'
+import CityWorld from './scene/CityWorld'
+import { useResponsiveCamera } from './hooks/useResponsiveCamera'
 import styles from '../styles/hero.module.css'
+
+function CameraController() {
+  const { camera } = useThree()
+  const camConfig = useResponsiveCamera()
+
+  useEffect(() => {
+    camera.position.set(...camConfig.position)
+    camera.fov = camConfig.fov
+    camera.updateProjectionMatrix()
+  }, [camera, camConfig])
+
+  return null
+}
 
 export default function HeroCanvas() {
   return (
@@ -9,11 +24,13 @@ export default function HeroCanvas() {
       <Canvas
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: false }}
-        camera={{ position: [0, 5.5, 12], fov: 55 }}
+        camera={{ position: [0, 11, 9], fov: 65 }}
       >
-        <color attach="background" args={['#0c0e16']} />
+        <color attach="background" args={['#1a2d4a']} />
         <Suspense fallback={null}>
           <Atmosphere />
+          <CityWorld />
+          <CameraController />
         </Suspense>
       </Canvas>
     </div>
