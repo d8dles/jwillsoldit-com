@@ -24,7 +24,7 @@ export default function HeroCanvas() {
       <Canvas
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: false }}
-        camera={{ position: [0, 5.5, 12], fov: 55 }}
+        camera={{ position: [0, 3.5, 8.5], fov: 52 }}
       >
         <color attach="background" args={['#0c0e16']} />
         <Suspense fallback={null}>
