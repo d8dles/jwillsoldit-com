@@ -1,4 +1,6 @@
 import { Canvas } from '@react-three/fiber'
+import { Suspense } from 'react'
+import Atmosphere from './scene/Atmosphere'
 import styles from '../styles/hero.module.css'
 
 export default function HeroCanvas() {
@@ -10,6 +12,9 @@ export default function HeroCanvas() {
         camera={{ position: [0, 5.5, 12], fov: 55 }}
       >
         <color attach="background" args={['#0c0e16']} />
+        <Suspense fallback={null}>
+          <Atmosphere />
+        </Suspense>
       </Canvas>
     </div>
   )
